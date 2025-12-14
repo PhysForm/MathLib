@@ -1,15 +1,50 @@
+# modules:
+from functools import lru_cache as lcache
+import sympy as smp
+from decimal import Decimal as dcml, getcontext as gtctx
+
+# modules required for Library: 
+"""
+functools (lru_cache)
+sympy (CAS functionality)
+decimal (Precision)
+scipy (?)
+numpy (?)
+"""
+
 # Mathematics section 
 
+global accuracy = 999999999
+
+class Accurate:
+    Accy = accuracy
+    def __init__():
+        super()._init__(Accy)
+        
+        
+
+def abs(x:float):
+    """Returns the Absolute value of x"""
+    if x < 0:
+        return -x
+    else:
+        return x
+
 def IntAngleSum(n:float):
+    """Returns the sum of all interior angles based off of the number of sides"""
     IAS = (n-2)*180
     return IAS
+    
 def IntAngle(n:float):
+    """Returns the measure of the Interior Angle based off of the number of sides"""
     IA = ((n-2)*180)/n
     return IA
+    
 def AreaC(r:float,pi:float):
+    """Returns the Area of a circle based off of a radius and a value of pi (default is pi(9999999999999999999))"""
     A = (pi*(r**2))
     return A
-def Circum(r:float, pi : float):
+def Circum(r:float, pi:float):
     C = (2*r)*pi
     return C
 def TriArea(base:float, height:float):
@@ -161,7 +196,7 @@ def cbrt(n:float,tolerance=0.0000000000001,maxiter = 1000000000000000):
     return guess
 def sqrt(number:float, tolerance=0.0000000000001, max_iterations=1000000000000000):
     if number < 0:
-        raise ValueError("Cannot calculate the square root of a negative number")
+        number = abs(number)
     if number == 0:
         return 0
     if number == 1:
@@ -204,26 +239,19 @@ def ListMean(dataset:list):
 def TwoPointSlope(x1:float,y1:float,x2:float,y2:float):
     m = ((y2-y1)/(x2-x1))
     return m
+def TwoPointSlope(xy[3]):
+    m = ((xy[1]-xy[3])/(xy[0]-xy[2]))
 def TwoPointDistance(x1:float,y1:float,x2:float,y2:float):
     D = sqrt(((x2-x1)**2) + ((y2-y1)**2))
     return D
-def ln(x:float,tol=0.0000000000001):
-    if x <= 0:
-        raise ValueError("Input must be a positive number")
-    if x == 1:
-        return 0.0
-    n = 0
-    while x >= 2:
-        x /= e
-        n += 1
-    result = 0.0
-    term = (x - 1)
-    i = 1
-    while abs(term) > tol:
-        result += term / i
-        term *= (x - 1)
-        i += 1
-    return result + n
+def ln(a:float, precision = 1000000000000000000000000000000,first_guess = x + 1, e = e(999999)):
+    x0 = first_guess
+    while precision > 0:
+        x1 = x0 - ((e-a)/(e)
+        precision = precision - 1
+    return x1
+    
+       
 def log(x:float,base:float):
     if x <= 0 or base <= 0 or base == 1:
         raise ValueError("Arguments x and base must be a positive number. The base must be greater than 1")
@@ -233,6 +261,8 @@ def factorial(n:int):
         return 1
     else:
         return n * factorial(n - 1)
+
+
 #constants
 def pi():
     pi = 3.1415926535897932384
@@ -397,4 +427,5 @@ class solg():
         return SA
     def ConeVol(pi:float,r:float):
         CoVo = ((1/3)*(pi*(r**2)))
+
         return CoVo
