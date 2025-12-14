@@ -45,6 +45,7 @@ def AreaC(r: dcml,pi: dcml):
     return A
     
 def Circum(r: dcml, pi: dcml):
+    """Returns the Circumference of a circle based off of a radius r and pi inputs"""
     C = (2*r)*pi
     return C
     
@@ -463,4 +464,5 @@ class solg():
         CoVo = ((1/3)*(pi*(r**2)))
 
         return CoVo
+
 
