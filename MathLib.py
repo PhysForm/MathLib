@@ -12,69 +12,79 @@ scipy (?)
 numpy (?)
 """
 
+# Accuracy stuffs
+gtctx().prec = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+SUCCESS_CODE = dcml(1)
+ERROR_CODE = dcml(-1)
+EXIT_CODE = dcml(0)
+INTERRUPT = dcml()
+
 # Mathematics section 
+      
 
-global accuracy = 999999999
-
-class Accurate:
-    Accy = accuracy
-    def __init__():
-        super()._init__(Accy)
-        
-        
-
-def abs(x:float):
+def abs(x: dcml):
     """Returns the Absolute value of x"""
     if x < 0:
         return -x
     else:
         return x
 
-def IntAngleSum(n:float):
+def IntAngleSum(n: dcml):
     """Returns the sum of all interior angles based off of the number of sides"""
     IAS = (n-2)*180
     return IAS
     
-def IntAngle(n:float):
+def IntAngle(n: dcml):
     """Returns the measure of the Interior Angle based off of the number of sides"""
     IA = ((n-2)*180)/n
     return IA
     
-def AreaC(r:float,pi:float):
+def AreaC(r: dcml,pi: dcml):
     """Returns the Area of a circle based off of a radius and a value of pi (default is pi(9999999999999999999))"""
     A = (pi*(r**2))
     return A
-def Circum(r:float, pi:float):
+    
+def Circum(r: dcml, pi: dcml):
     C = (2*r)*pi
     return C
-def TriArea(base:float, height:float):
+    
+def TriArea(base: dcml, height: dcml):
     A = (base*height)/2
     return A
-def PythagC(a:float, b:float):
+    
+def PythagC(a: dcml, b: dcml):
     c = sqrt((a**2)+(b**2))
     return c
-def PythagB(a:float, c:float):
+    
+def PythagB(a: dcml, c: dcml):
     b = sqrt((c**2)-(a**2))
     return b
-def PythagA(b:float, c:float):
+    
+def PythagA(b: dcml, c: dcml):
     a = sqrt((c**2)-(b**2))
     return a
-def SinruleA(b:float, alpha:float, beta:float):
+    
+def SinruleA(b: dcml, alpha: dcml, beta: dcml):
     a = (b*((m.sin(alpha))/(m.sin(beta))))
     return a
-def SinRuleB(a:float,beta:float,alpha:float):
+    
+def SinRuleB(a: dcml,beta: dcml,alpha: dcml):
     b = a*(m.sin(beta)/m.sin(alpha))
     return b
-def CosruleSide(a:float, b:float, gamma:float):
+    
+def CosruleSide(a: dcml, b: dcml, gamma: dcml):
     c = sqrt(((a**2)+(b**2)-(2*a*b*(m.invcos(gamma)))))
     return c
-def CosruleAngle(a:float, b:float, c:float):
+    
+def CosruleAngle(a: dcml, b: dcml, c: dcml):
     gamma = m.invcos(((a**2)+(b**2)-(c**2)/(2*a*b))/(2*a*b))
     return gamma
-def asinh(x:float):
+    
+def asinh(x: dcml):
     ASh = ln(x+sqrt((x**2)+1))
     return ASh
-def asin(x:float, num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
+    
+def asin(x: dcml, num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
     if not (-1 <= x <= 1):
         raise ValueError("Input value must be in the range [-1, 1]")
     result = 0
@@ -84,7 +94,8 @@ def asin(x:float, num_terms:int): #num_terms is the level of accuracy, therefore
         term = (numerator / denominator) * (x**(2 * n + 1))
         result += term
     return result
-def atanh(x:float):
+    
+def atanh(x: dcml):
     if abs(x) >= 1:
         raise ValueError("Input value must be between -1 and 1 (exclusive).")
     numerator = 1 + x
@@ -92,7 +103,8 @@ def atanh(x:float):
     log_term = m.ln(numerator / denominator)
     result = 0.5 * log_term
     return result
-def acos(x:float, num_terms:int,pi:float): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
+    
+def acos(x: dcml, num_terms:int,pi: dcml): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
     if not -1 <= x <= 1:
         raise ValueError("Input value must be between -1 and 1")
     result = pi / 2
@@ -110,81 +122,100 @@ def acos(x:float, num_terms:int,pi:float): #num_terms is the level of accuracy, 
            term = ( (factorial(2 * i) * (x**(2*i + 1)) ) / ((2**i) * (factorial(i))**2 * (2*i + 1)) )
         result -= term
     return result
-def acosh(x:float):
+    
+def acosh(x: dcml):
     if x < 1:
         raise ValueError("Input value out of domain (x must be >= 1)")
     acosh_x = m.ln(x + sqrt((x**2)-1))
     return acosh_x
-def atan(x:float, num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
+    
+def atan(x: dcml, num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
     result = 0
     for n in range(num_terms):
         term = ((-1)**n) * (x**(2*n+1)) / (2*n+1)
         result += term
     return result
-def cosh(x:float,num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
+    
+def cosh(x: dcml,num_terms:int): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
     result = 0
     for n in range(num_terms):
         term = (x**(2 * n)) / factorial(2 * n)
         result += term
     return result
-def sinh(x:float,num_terms:float): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
+    
+def sinh(x: dcml,num_terms: dcml): #num_terms is the level of accuracy, therefore increased number of terms is an increased accuracy
     sinh_x = 0
     n = 0
     for n in range(num_terms):
         term = (x**(2*n + 1)) / factorial(2*n + 1)
         sinh_x += term
     return sinh_x
-def tanh(x:float):
+    
+def tanh(x: dcml):
     tanh_x = ((e()**x)-(e()**(-x))) / ((e()**x)+(e()**(-x)))
     return tanh_x
-def csc(x:float):
+    
+def csc(x: dcml):
     cscX = (1/(m.sin(x)))
     return cscX
-def sec(x:float):
+    
+def sec(x: dcml):
     secX = (1/(m.cos(x)))
     return secX
-def cot(x:float):
+    
+def cot(x: dcml):
     cotX = (1/(m.tan(x)))
     return cotX
-def Rectarea(s1:float,s2:float):
+    
+def Rectarea(s1: dcml,s2: dcml):
     RA = s1*s2
     return RA
-def TrapArea(b1:float, b2:float, h:float):
+    
+def TrapArea(b1: dcml, b2: dcml, h: dcml):
     TA = (((b1+b2)/2)*h)
     return TA
-def RhombusArea(p:float, q:float): #p & q are  diagonals
+    
+def RhombusArea(p: dcml, q: dcml): #p & q are  diagonals
     RhA = ((p*q)/2)
     return RhA
-def PentArea(d:float,a,float):
+    
+def PentArea(d: dcml,a,float):
     Ap = (1/4)*(sqrt(5*(5+(2*sqrt(5)))))*(a**2)
     return Ap
-def HexArea(side:float):
+    
+def HexArea(side: dcml):
     Ha = ((3*sqrt(3))/2)*(side**2)
     return Ha
-def HeptArea(side:float):
+    
+def HeptArea(side: dcml):
     Ah = (7/4)*(side**2)*plg.cot(180/7)
     return Ah
-def OctArea(side:float):
+    
+def OctArea(side: dcml):
     Oa = 2*(1+sqrt(2))*(side**2)
     return Oa
-def EnnArea(side:float):
+    
+def EnnArea(side: dcml):
     EnA = (9/4)*(side**2)*plg.cot(180/9)
     return EnA
-def DecArea(side:float):
+    
+def DecArea(side: dcml):
     Da = (5/2)*(side**2)*sqrt(5+(2*sqrt(5)))
     return Da
+    
 def gcd(a, b):
         while b:
             a, b = b, a % b
         return a
+    
 def Φ(n):
         count = 0
         for i in range(1, n + 1):
             if gcd(n, i) == 1:
                 count += 1
         return count
-e = [[["Hello!", "Welcome!", "Hi!"],[]]]
-def cbrt(n:float,tolerance=0.0000000000001,maxiter = 1000000000000000):
+
+def cbrt(n: dcml,tolerance=0.0000000000001,maxiter = 1000000000000000):
     if n == 0:
         return 0
     guess = n/2
@@ -194,7 +225,8 @@ def cbrt(n:float,tolerance=0.0000000000001,maxiter = 1000000000000000):
             return next_guess
         guess = next_guess
     return guess
-def sqrt(number:float, tolerance=0.0000000000001, max_iterations=1000000000000000):
+    
+def sqrt(number: dcml, tolerance=0.0000000000001, max_iterations=1000000000000000):
     if number < 0:
         number = abs(number)
     if number == 0:
@@ -207,44 +239,46 @@ def sqrt(number:float, tolerance=0.0000000000001, max_iterations=100000000000000
         if abs(new_guess - guess) < tolerance:
             return new_guess
     guess = new_guess
-    return guess  # Return the last guess if tolerance not reached
+    return guess
+    # Return the last guess if tolerance not reached
+
 def Quadrat(a:int, b:int, c:int):
     QP = (((0-b)+(sqrt(((b**2)-(4*a*c)))))/(2*a))
     QM = (((0-b)-(sqrt(((b**2)-(4*a*c)))))/(2*a))
     return QP,QM
-def DegRad(x:float,pi:float):
+def DegRad(x: dcml,pi: dcml):
     t = ((x*pi)/(180))
     return t
-def RadDeg(t:float, pi:float):
+def RadDeg(t: dcml, pi: dcml):
     x = ((180*t)/pi)
     return x
-def DegGrad(x:float):
+def DegGrad(x: dcml):
     g = x*(200/180)
     return g
-def GradDeg(g:float):
+def GradDeg(g: dcml):
     x = (g*180/200)
     return x
-def GradRad(g:float, pi:float):
+def GradRad(g: dcml, pi: dcml):
     t = g *(pi/200)
     return t
-def RadGrad(t:float, pi:float):
+def RadGrad(t: dcml, pi: dcml):
     g = t *(200/pi)
     return g
-def Longavg(sum:float, number_of_numbers:float):
+def Longavg(sum: dcml, number_of_numbers: dcml):
     avgX = (sum/number_of_numbers)
     return avgX
 def ListMean(dataset:list):
     Mean = sum(dataset)/len(dataset)
     return Mean
-def TwoPointSlope(x1:float,y1:float,x2:float,y2:float):
+def TwoPointSlope(x1: dcml,y1: dcml,x2: dcml,y2: dcml):
     m = ((y2-y1)/(x2-x1))
     return m
 def TwoPointSlope(xy[3]):
     m = ((xy[1]-xy[3])/(xy[0]-xy[2]))
-def TwoPointDistance(x1:float,y1:float,x2:float,y2:float):
+def TwoPointDistance(x1: dcml,y1: dcml,x2: dcml,y2: dcml):
     D = sqrt(((x2-x1)**2) + ((y2-y1)**2))
     return D
-def ln(a:float, precision = 1000000000000000000000000000000,first_guess = x + 1, e = e(999999)):
+def ln(a: dcml, precision = 1000000000000000000000000000000,first_guess = x + 1, e = e(999999)):
     x0 = first_guess
     while precision > 0:
         x1 = x0 - ((e-a)/(e)
@@ -252,7 +286,7 @@ def ln(a:float, precision = 1000000000000000000000000000000,first_guess = x + 1,
     return x1
     
        
-def log(x:float,base:float):
+def log(x: dcml,base: dcml):
     if x <= 0 or base <= 0 or base == 1:
         raise ValueError("Arguments x and base must be a positive number. The base must be greater than 1")
     return log(x) / log(base) # Using the natural logarithm (base e)
@@ -342,13 +376,13 @@ def  LochConst():
 
 
 # Trauma for the survivors:
-def Powinteg(x:float, n:float): # n = exponent
+def Powinteg(x: dcml, n: dcml): # n = exponent
     IntegX = ((x**(n+1))/(n+1))
     return IntegX
-def ScalarInteg(x:float, n:float, multiple:float):
+def ScalarInteg(x: dcml, n: dcml, multiple: dcml):
     SI = multiple * m.Powinteg(x,n)
     return SI
-def limit(f:vars, x_limit:float, step:float): # function f(x) must be either along the lines of or exactly defined as def f(x): \nf_x = (operations upon that x) \n return f_x
+def limit(f:vars, x_limit: dcml, step: dcml): # function f(x) must be either along the lines of or exactly defined as def f(x): \nf_x = (operations upon that x) \n return f_x
     leftx = [x_limit - step * (1/2)**i for i in range(1,10)]
     rightx = [x_limit + step * (1/2)**i for i in range(1, 10)]
     lefty = [f(x) for x in leftx]
@@ -359,13 +393,13 @@ def limit(f:vars, x_limit:float, step:float): # function f(x) must be either alo
         raise ValueError("Limit non-existent (None is returned)")
 
 #sequence
-def AritSeq(first_term:float, Term_number:int, common_difference:float):
+def AritSeq(first_term: dcml, Term_number:int, common_difference: dcml):
     An = first_term + ((Term_number-1)*common_difference)
     return An
-def GeoSeq(first_term:float, Term_number:int, ratio:float):
+def GeoSeq(first_term: dcml, Term_number:int, ratio: dcml):
     Gn = (first_term * (ratio**(Term_number-1)))
     return Gn
-def HarSeq(first_term:float, Term_number:int, common_difference:float):
+def HarSeq(first_term: dcml, Term_number:int, common_difference: dcml):
     Hn = 1/(first_term + ((Term_number-1)*common_difference))
     return Hn
 def FiboSeq(Term_number:int):
@@ -392,7 +426,7 @@ def EnneaSeq(n:int):
 def DekaSeq(n:int):
     Dn = n * ((4*n) - 3) 
     return Dn
-def Σ(n:int,first_i:int, coefficient:int, added_value:float) -> float:
+def Σ(n:int,first_i:int, coefficient:int, added_value: dcml) -> float:
     a1 = (coefficient*first_i) + added_value
     an = (coefficient*n) + added_value
     Sum = ((n*(a1+an))/2)
@@ -411,21 +445,22 @@ def StdDeviant(data:list):
     return std_deviant
 #Geometry Library
 class solg():
-    def CircSA(r:float,pi:float):
+    def CircSA(r: dcml,pi: dcml):
         SA = 4*(pi*(r**2))
         return SA
-    def CircVol(r:float,pi:float):
+    def CircVol(r: dcml,pi: dcml):
         V = (4/3)*(pi*(r**3))
         return V
-    def ConeLSA(r:float,pi:float,l:float):
+    def ConeLSA(r: dcml,pi: dcml,l: dcml):
         LSA = pi*r*l
         return LSA
-    def ConeSA(pi:float,r:float,l:float):
+    def ConeSA(pi: dcml,r: dcml,l: dcml):
         LSA = pi*r*l
         base = pi*(r**2)
         SA = LSA+base
         return SA
-    def ConeVol(pi:float,r:float):
+    def ConeVol(pi: dcml,r: dcml):
         CoVo = ((1/3)*(pi*(r**2)))
 
         return CoVo
+
