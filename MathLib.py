@@ -314,12 +314,16 @@ def factorial(n:int):
 
 # Calculus by ai
 def Powinteg(x: dcml, n: dcml): # n = exponent
+      """Power Integration based off of an x and an exponent n"""
     IntegX = ((x**(n+1))/(n+1))
-    return IntegX
+    return IntegX 
+
 def ScalarInteg(x: dcml, n: dcml, multiple: dcml):
     SI = multiple * m.Powinteg(x,n)
     return SI
-def limit(f:vars, x_limit: dcml, step: dcml): # function f(x) must be either along the lines of or exactly defined as def f(x): \nf_x = (operations upon that x) \n return f_x
+
+def limit(f:vars, x_limit: dcml, step: dcml):
+      """function f(x) must be either along the lines of or exactly defined as def f(x): \nf_x = (operations upon that x) \n return f_x"""
     leftx = [x_limit - step * (1/2)**i for i in range(1,10)]
     rightx = [x_limit + step * (1/2)**i for i in range(1, 10)]
     lefty = [f(x) for x in leftx]
@@ -333,37 +337,48 @@ def limit(f:vars, x_limit: dcml, step: dcml): # function f(x) must be either alo
 def AritSeq(first_term: dcml, Term_number:int, common_difference: dcml):
     An = first_term + ((Term_number-1)*common_difference)
     return An
+
 def GeoSeq(first_term: dcml, Term_number:int, ratio: dcml):
     Gn = (first_term * (ratio**(Term_number-1)))
     return Gn
+      
 def HarSeq(first_term: dcml, Term_number:int, common_difference: dcml):
     Hn = 1/(first_term + ((Term_number-1)*common_difference))
     return Hn
+      
 def FiboSeq(Term_number:int):
     Fn = (((phi())**Term_number)-((1-phi())**Term_number)/sqrt(5))
     return Fn
+      
 def TriSeq(n:int): # n = Term_number
     Tn = n*(n+1)/2
     return Tn
+      
 def PentSeq(n:int): # n = Term_number
     Pn = n*((3*n)-1)/2
     return Pn
+      
 def HexSeq(n:int): # n = Term_number
     Hn = n*((2*n) - 1)
     return Hn
+      
 def HeptSeq(n:int): 
     Sn = n * ((5*n) - 3) / 2
     return Sn
+      
 def OctSeq(n:int):
     On = n*((3*n)-2)
     return On
+      
 def EnneaSeq(n:int):
     Nn = ((n*((7*n)-5))/2)
     return Nn
+      
 def DekaSeq(n:int):
     Dn = n * ((4*n) - 3) 
     return Dn
-def Σ(n:int,first_i:int, coefficient:int, added_value: dcml) -> float:
+      
+def Σ(n:dcml, first_i:dcml, coefficient:dcml, added_value: dcml) -> dcml:
     a1 = (coefficient*first_i) + added_value
     an = (coefficient*n) + added_value
     Sum = ((n*(a1+an))/2)
@@ -375,11 +390,13 @@ def CapPi(seq:list):
     for x in seq:
         Res *= x
     return Res
+      
 def StdDeviant(data:list):
     sqdiffsum = sum([(x-ListMean(data))**2 for x in data])
     variance = sqdiffsum / len(data)
     std_deviant = sqrt(variance)
     return std_deviant
+      
 #Geometry Library
 class solg():
     def CircSA(r: dcml,pi: dcml):
@@ -398,8 +415,8 @@ class solg():
         return SA
     def ConeVol(pi: dcml,r: dcml):
         CoVo = ((1/3)*(pi*(r**2)))
-
         return CoVo
+
 
 
 
