@@ -247,60 +247,73 @@ def Quadrat(a:int, b:int, c:int):
     QP = (((0-b)+(sqrt(((b**2)-(4*a*c)))))/(2*a))
     QM = (((0-b)-(sqrt(((b**2)-(4*a*c)))))/(2*a))
     return QP,QM
+      
 def DegRad(x: dcml,pi: dcml):
     t = ((x*pi)/(180))
     return t
+      
 def RadDeg(t: dcml, pi: dcml):
     x = ((180*t)/pi)
     return x
+      
 def DegGrad(x: dcml):
     g = x*(200/180)
     return g
+      
 def GradDeg(g: dcml):
     x = (g*180/200)
     return x
+      
 def GradRad(g: dcml, pi: dcml):
     t = g *(pi/200)
     return t
+      
 def RadGrad(t: dcml, pi: dcml):
     g = t *(200/pi)
     return g
+      
 def Longavg(sum: dcml, number_of_numbers: dcml):
     avgX = (sum/number_of_numbers)
     return avgX
+      
 def ListMean(dataset:list):
     Mean = sum(dataset)/len(dataset)
     return Mean
+      
 def TwoPointSlope(x1: dcml,y1: dcml,x2: dcml,y2: dcml):
     m = ((y2-y1)/(x2-x1))
     return m
+      
 def TwoPointSlope(xy[3]):
     m = ((xy[1]-xy[3])/(xy[0]-xy[2]))
+      return m
+
 def TwoPointDistance(x1: dcml,y1: dcml,x2: dcml,y2: dcml):
     D = sqrt(((x2-x1)**2) + ((y2-y1)**2))
     return D
+
+@lru_cache
 def ln(a: dcml, precision = 1000000000000000000000000000000,first_guess = x + 1, e = e(999999)):
     x0 = first_guess
     while precision > 0:
         x1 = x0 - ((e-a)/(e)
         precision = precision - 1
     return x1
-    
-       
+
 def log(x: dcml,base: dcml):
     if x <= 0 or base <= 0 or base == 1:
         raise ValueError("Arguments x and base must be a positive number. The base must be greater than 1")
-    return log(x) / log(base) # Using the natural logarithm (base e)
+    return log(x) / log(base) # Using the natural logarithm (base e) 
+
 def factorial(n:int):
     if n == 0:
         return 1
     else:
         return n * factorial(n - 1)
 
-
 #constants
 def pi():
-    pi = 3.1415926535897932384
+    pi = 
     return pi
 def phi():
     phi = 1.618033988749895
@@ -464,5 +477,6 @@ class solg():
         CoVo = ((1/3)*(pi*(r**2)))
 
         return CoVo
+
 
 
