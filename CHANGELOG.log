@@ -1,0 +1,12 @@
+Developer Notes:
+float doesn't have enough precision, is Decimal good?
+Decimal works. Test on 3.11, 3.12, 3.13 (all versions), and 3.14 (All types)
+Log Entries:
+
+  Release 1:
+    2 Sections, math and constants
+  Release 2:
+    2 Sections, more functions
+  UPDATE 1:
+    @ sections, now a faster log(base:dcml, value:dcml) with @lru_cache decorator
+  UPDATES:
